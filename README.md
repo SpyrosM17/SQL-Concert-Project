@@ -1,34 +1,35 @@
-RecordCompany Database Project 🎸
+# 🎸 RecordCompany Database Project
 
-📝 Περιγραφή
+## 📝 Description
+This project involves the design and development of a comprehensive relational database system for a record label. The system manages critical industry information, including artists, bands, producers, album releases, and the scheduling of live concerts at various venues.
 
-Στόχος είναι ο σχεδιασμός και η ανάπτυξη μιας βάσης δεδομένων για μια δισκογραφική εταιρεία, η οποία διαχειρίζεται πληροφορίες για καλλιτέχνες, συγκροτήματα, παραγωγούς, κυκλοφορίες άλμπουμ και τον προγραμματισμό συναυλιών σε διάφορους χώρους (venues). 
+## 🛠️ Tech Stack
+* **Database:** MySQL (Relational Schema)
+* **Backend:** Java (JDBC) for database connectivity and logic
+* **Frontend:** Java Swing (GUI) for a desktop-based user interface
 
-🛠️ Τεχνικά Χαρακτηριστικά
+## 📂 Database Structure
+The schema is designed to cover the full spectrum of music industry operations, organized into the following modules:
+* **Personnel & Talent:** `person`, `band`, `artist`, `bandmember`.
+* **Production:** `album`, `track`, `producer`, `recordcompany`.
+* **Live Events:** `concert`, `venue`, `concert_history`.
+* **Administration & Logs:** `dba`, `dbalog`, `action_log`.
 
-Database: MySQL (Relational Schema) 
-Backend: Java (JDBC) για τη σύνδεση και διαχείριση της βάσης 
-Frontend: Java Swing (GUI)
+## ⚙️ SQL Functionality
 
-📂 Δομή Βάσης Δεδομένων
+### Stored Procedures
+* **`getscore`**: Calculates a venue's performance score based on capacity and historical experience.
+* **`PlanConcert`**: Automates the scheduling, cancellation, or rescheduling of concert events.
+* **`GetVenueData`**: Utilizes a **Cursor** to identify the optimal venue for a specific concert based on predefined criteria.
 
-Η βάση αποτελείται από πίνακες που καλύπτουν όλο το φάσμα της μουσικής βιομηχανίας, όπως: Προσωπικό/Καλλιτέχνες: person, band, artist, bandmember.
-Παραγωγή: album, track, producer, recordcompany.
-Συναυλίες: consert, venue, consert History
-Διαχείριση & Logs: dba, dbalog, action_log. 
+### Triggers
+* **Constraint Enforcement:** Ensures business rules are met (e.g., preventing an artist from exceeding a maximum number of scheduled concerts).
+* **Audit Logging:** Automatically records all `INSERT`, `UPDATE`, and `DELETE` actions in the `action_log` for the tables: `person`, `band`, `album`, `concert`, and `venue`.
+* **Venue Management:** Automatically updates venue availability upon the completion of a concert.
 
-⚙️ Λειτουργικότητες SQLStored Procedures:
+## 🖥️ User Interface (GUI)
+The Java Swing application provides an intuitive environment for:
+* **Data Visualization:** Browse and view the contents of any table within the database.
+* **CRUD Operations:** Seamlessly perform **Insert, Update, and Delete** actions via specialized popup modals.
+* **Smart Scheduling:** A dedicated tool to find the most suitable venue for a concert based on the required capacity and artist needs.
 
-getscore: Υπολογισμός βαθμολογίας ενός χώρου (venue) βάσει χωρητικότητας και εμπειρίας. 
-PlanConsert: Αυτοματοποιημένος προγραμματισμός, ακύρωση ή επαναπρογραμματισμός συναυλιών. 
-GetVenueData: Εύρεση του βέλτιστου χώρου για μια συναυλία με χρήση δρομέα (cursor). 
-Triggers:Έλεγχος περιορισμών (π.χ. μέγιστος αριθμός προγραμματισμένων συναυλιών ανά καλλιτέχνη).
-Αυτόματη καταγραφή ενεργειών (Audit Logs) στους πίνακες person, band, album, consert, venue. 
-Απελευθέρωση χώρου (Venue) με την ολοκλήρωση μιας συναυλίας. 
-
-🖥️ Περιβάλλον Χρήστη (GUI)
-
-Η εφαρμογή παρέχει ένα φιλικό περιβάλλον για: 
-Προβολή Δεδομένων: Δυνατότητα εμφάνισης περιεχομένων για κάθε πίνακα της βάσης. 
-Διαχείριση (CRUD): Εκτέλεση εντολών INSERT, UPDATE, DELETE μέσω ειδικών popup παραθύρων. 
-Εξειδικευμένες Λειτουργίες: Εύρεση κατάλληλου venue για μια συναυλία βάσει απαιτούμενης χωρητικότητας.
